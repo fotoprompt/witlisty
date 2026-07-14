@@ -2,7 +2,8 @@ import { Hero } from "@/components/hero";
 import { UploadZone } from "@/features/upload/components/upload-zone";
 import { UploadSummary } from "@/features/upload/components/upload-summary";
 import { FileReview } from "@/features/upload/components/file-review";
-
+import { ParserPlayground } from "../features/parser/components/parser-playground";
+import { ProductsList } from "@/features/products/components/products-list";
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -11,6 +12,8 @@ export default function Home() {
         <UploadZone />
         <UploadSummary />
         <FileReview />
+        <ParserPlayground />
+        <ProductsList />
       </div>
     </main>
   );

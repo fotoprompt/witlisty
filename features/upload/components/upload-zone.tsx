@@ -4,11 +4,29 @@ import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Upload } from "lucide-react";
 import { useUploadStore } from "@/features/upload/store/upload-store";
+import { create } from "zustand";
+import type { Product } from "@/features/parser/types/product";
+import { groupFiles } from "@/features/parser/services/group-files";
+
+interface ProductStore {
+  products: Product[];
+
+  setProducts: (products: Product[]) => void;
+
+  clearProducts: () => void;
+}
+
+export const useProductStore = create<ProductStore>((set) => ({
+  products: [],
+
+  setProducts: (products) => set({ products }),
+
+  clearProducts: () => set({ products: [] }),
+}));
 
 export function UploadZone() {
   // Zustand Store
   const addFiles = useUploadStore((state) => state.addFiles);
-
   // Handle dropped files
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
